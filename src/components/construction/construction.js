@@ -11,7 +11,7 @@ export default class ConstructionComponent extends Component{
     /*The Construction Image in ASCII Art*/
     return (
       <Row className="width">
-        <Col xs={6}>
+        <Col xs={{span: 12, order:"last"}} md={{span: 6, order:"first"}}>
           {/*The ASCII Art Image of Construction*/}
           <pre className="text-warning pt-2 sizeHalf">{`
                                   ▗▄▛▀▀▀▜▄▖
@@ -58,8 +58,8 @@ export default class ConstructionComponent extends Component{
               ▞█    ▞▌                                 ▞█    █▌
               ▝▀▀▀▀▀▀▘                                 ▝▀▀▀▀▀▀▘`}</pre>
         </Col>
-        <Col xs={6} className="w-100 sizeHalfHalf pt-5">
-          <pre className="text-primary overflow-hidden">
+        <Col xs={{span: 12, order:"first"}} md={{span: 6, order:"last"}} className="w-100 sizeHalfHalf pt-5">
+          <pre className="text-primary overflow-hidden pl-3 pl-md-0">
             {figlet.textSync('Site')}
             {figlet.textSync('Under')}
             {figlet.textSync('Development')}

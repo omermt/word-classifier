@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import InConstruction from './components/construction/construction.js';
 import {Container} from 'react-bootstrap';
