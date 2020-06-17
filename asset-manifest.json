@@ -1,23 +1,25 @@
 {
   "files": {
-    "main.css": "/word-classifier/static/css/main.5f361e03.chunk.css",
-    "main.js": "/word-classifier/static/js/main.4db8120b.chunk.js",
-    "main.js.map": "/word-classifier/static/js/main.4db8120b.chunk.js.map",
+    "main.css": "/word-classifier/static/css/main.77671686.chunk.css",
+    "main.js": "/word-classifier/static/js/main.e46ed86c.chunk.js",
+    "main.js.map": "/word-classifier/static/js/main.e46ed86c.chunk.js.map",
     "runtime-main.js": "/word-classifier/static/js/runtime-main.c1ceb3f1.js",
     "runtime-main.js.map": "/word-classifier/static/js/runtime-main.c1ceb3f1.js.map",
-    "static/js/2.7c103051.chunk.js": "/word-classifier/static/js/2.7c103051.chunk.js",
-    "static/js/2.7c103051.chunk.js.map": "/word-classifier/static/js/2.7c103051.chunk.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/word-classifier/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.03a8eb6d.chunk.js": "/word-classifier/static/js/2.03a8eb6d.chunk.js",
+    "static/js/2.03a8eb6d.chunk.js.map": "/word-classifier/static/js/2.03a8eb6d.chunk.js.map",
     "index.html": "/word-classifier/index.html",
-    "precache-manifest.91588edea19246a0a5ba8d83c424132e.js": "/word-classifier/precache-manifest.91588edea19246a0a5ba8d83c424132e.js",
+    "precache-manifest.56b44f95553d19e75559d17252a748da.js": "/word-classifier/precache-manifest.56b44f95553d19e75559d17252a748da.js",
     "service-worker.js": "/word-classifier/service-worker.js",
-    "static/css/main.5f361e03.chunk.css.map": "/word-classifier/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.7c103051.chunk.js.LICENSE.txt": "/word-classifier/static/js/2.7c103051.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/word-classifier/static/media/logo.5d5d9eef.svg"
+    "static/css/2.af3c1da9.chunk.css.map": "/word-classifier/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.77671686.chunk.css.map": "/word-classifier/static/css/main.77671686.chunk.css.map",
+    "static/js/2.03a8eb6d.chunk.js.LICENSE.txt": "/word-classifier/static/js/2.03a8eb6d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c1ceb3f1.js",
-    "static/js/2.7c103051.chunk.js",
-    "static/css/main.5f361e03.chunk.css",
-    "static/js/main.4db8120b.chunk.js"
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.03a8eb6d.chunk.js",
+    "static/css/main.77671686.chunk.css",
+    "static/js/main.e46ed86c.chunk.js"
   ]
 }
