@@ -1,0 +1,13 @@
+.theBar{
+  /*width: 2rem;*/
+  height: 3.5rem;
+  border-style: solid;
+}
+
+.setBorder{
+  border-style: solid;
+}
+
+.autoMargin{
+  margin: auto;
+}
