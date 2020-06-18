@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/word-classifier/static/css/main.77671686.chunk.css",
-    "main.js": "/word-classifier/static/js/main.e46ed86c.chunk.js",
-    "main.js.map": "/word-classifier/static/js/main.e46ed86c.chunk.js.map",
+    "main.css": "/word-classifier/static/css/main.8bd429b2.chunk.css",
+    "main.js": "/word-classifier/static/js/main.49951c99.chunk.js",
+    "main.js.map": "/word-classifier/static/js/main.49951c99.chunk.js.map",
     "runtime-main.js": "/word-classifier/static/js/runtime-main.c1ceb3f1.js",
     "runtime-main.js.map": "/word-classifier/static/js/runtime-main.c1ceb3f1.js.map",
-    "static/css/2.af3c1da9.chunk.css": "/word-classifier/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.03a8eb6d.chunk.js": "/word-classifier/static/js/2.03a8eb6d.chunk.js",
-    "static/js/2.03a8eb6d.chunk.js.map": "/word-classifier/static/js/2.03a8eb6d.chunk.js.map",
+    "static/css/2.cc1a181b.chunk.css": "/word-classifier/static/css/2.cc1a181b.chunk.css",
+    "static/js/2.c60e0ec1.chunk.js": "/word-classifier/static/js/2.c60e0ec1.chunk.js",
+    "static/js/2.c60e0ec1.chunk.js.map": "/word-classifier/static/js/2.c60e0ec1.chunk.js.map",
     "index.html": "/word-classifier/index.html",
-    "precache-manifest.0e32280c833f81a4d741e1bd76e11699.js": "/word-classifier/precache-manifest.0e32280c833f81a4d741e1bd76e11699.js",
+    "precache-manifest.4a94053b02cfbe0859d7658cf6a5d797.js": "/word-classifier/precache-manifest.4a94053b02cfbe0859d7658cf6a5d797.js",
     "service-worker.js": "/word-classifier/service-worker.js",
-    "static/css/2.af3c1da9.chunk.css.map": "/word-classifier/static/css/2.af3c1da9.chunk.css.map",
-    "static/css/main.77671686.chunk.css.map": "/word-classifier/static/css/main.77671686.chunk.css.map",
-    "static/js/2.03a8eb6d.chunk.js.LICENSE.txt": "/word-classifier/static/js/2.03a8eb6d.chunk.js.LICENSE.txt"
+    "static/css/2.cc1a181b.chunk.css.map": "/word-classifier/static/css/2.cc1a181b.chunk.css.map",
+    "static/css/main.8bd429b2.chunk.css.map": "/word-classifier/static/css/main.8bd429b2.chunk.css.map",
+    "static/js/2.c60e0ec1.chunk.js.LICENSE.txt": "/word-classifier/static/js/2.c60e0ec1.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/word-classifier/static/media/Asai-Analogue.08a4cb53.ttf"
   },
   "entrypoints": [
     "static/js/runtime-main.c1ceb3f1.js",
-    "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.03a8eb6d.chunk.js",
-    "static/css/main.77671686.chunk.css",
-    "static/js/main.e46ed86c.chunk.js"
+    "static/css/2.cc1a181b.chunk.css",
+    "static/js/2.c60e0ec1.chunk.js",
+    "static/css/main.8bd429b2.chunk.css",
+    "static/js/main.49951c99.chunk.js"
   ]
 }
