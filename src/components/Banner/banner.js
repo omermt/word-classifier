@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Typist from 'react-typist';
 import {Row, Col} from 'react-bootstrap';
+import LoadingBar from '../LoadingBar/loadingBar';
 import './style.css';
 
 export default class Banner extends Component{
@@ -10,11 +11,11 @@ export default class Banner extends Component{
 
   render(){
     return (
-      <Typist avgTypingDelay={0.0005} stdTypingDelay={0}>
-      <Row className="pt-5">
+      /*<div>
+        <Row className="pt-md-5">
         <Col xs={12} md={6}>
         <div className="bannerBook">
-          <pre className="bannerWordWhite pt-5 pl-5 text-success">
+          <pre className="bannerWordWhite pt-5 pl-md-5 text-success">
             {`
       @@@@@@@@@@@               @@@@@@@@@@/
     @@@*            @@    ,@@            @@@@
@@ -34,7 +35,7 @@ export default class Banner extends Component{
         </Col>
         <Col xs={12} md={6}>
         <div className="bannerWord">
-          <pre className="bannerWordWhite overflow-hidden pt-5 text-primary">
+          <pre className="bannerWordWhite overflow-hidden pt-md-5 text-primary">
             {`
 
 
@@ -62,8 +63,30 @@ Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
           </pre>
         </div>
         </Col>
-      </Row>
-      </Typist>
+        </Row>
+        <Row>
+          <Col className="display-3 text-primary">
+            <Typist stdTypingDelay={0}>
+              <span>
+                &gt;Loading, please wait...
+              </span>
+            </Typist>
+          </Col>
+        </Row>
+</div>*/
+      <div className="pt-5">
+        <LoadingBar/>
+        <div className="pt-5 text-primary display-4 pl-md-5 ml-md-5">
+          <Typist>
+            <span className="pl-md-5 ml-md-3">&gt;Loading, please wait...</span>
+          </Typist>
+        </div>
+        <footer className="pl-2 fixed-bottom">
+          <Typist cursor={{show:false}} startDelay={3000}>
+            <span className="h4">&gt;Omer Marquez 2020</span>
+          </Typist>
+        </footer>
+      </div>
     );
   }
 }
