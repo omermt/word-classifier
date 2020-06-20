@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/word-classifier/static/css/main.9ace80ee.chunk.css",
-    "main.js": "/word-classifier/static/js/main.78c32869.chunk.js",
-    "main.js.map": "/word-classifier/static/js/main.78c32869.chunk.js.map",
+    "main.js": "/word-classifier/static/js/main.9b0cc263.chunk.js",
+    "main.js.map": "/word-classifier/static/js/main.9b0cc263.chunk.js.map",
     "runtime-main.js": "/word-classifier/static/js/runtime-main.c1ceb3f1.js",
     "runtime-main.js.map": "/word-classifier/static/js/runtime-main.c1ceb3f1.js.map",
     "static/css/2.cc1a181b.chunk.css": "/word-classifier/static/css/2.cc1a181b.chunk.css",
     "static/js/2.9840ba79.chunk.js": "/word-classifier/static/js/2.9840ba79.chunk.js",
     "static/js/2.9840ba79.chunk.js.map": "/word-classifier/static/js/2.9840ba79.chunk.js.map",
     "index.html": "/word-classifier/index.html",
-    "precache-manifest.57a98aa3bde00438d23ceb2c949b4853.js": "/word-classifier/precache-manifest.57a98aa3bde00438d23ceb2c949b4853.js",
+    "precache-manifest.59742ab071480fefd59bc6627d204483.js": "/word-classifier/precache-manifest.59742ab071480fefd59bc6627d204483.js",
     "service-worker.js": "/word-classifier/service-worker.js",
     "static/css/2.cc1a181b.chunk.css.map": "/word-classifier/static/css/2.cc1a181b.chunk.css.map",
     "static/css/main.9ace80ee.chunk.css.map": "/word-classifier/static/css/main.9ace80ee.chunk.css.map",
@@ -22,6 +22,6 @@
     "static/css/2.cc1a181b.chunk.css",
     "static/js/2.9840ba79.chunk.js",
     "static/css/main.9ace80ee.chunk.css",
-    "static/js/main.78c32869.chunk.js"
+    "static/js/main.9b0cc263.chunk.js"
   ]
 }
