@@ -1,10 +1,21 @@
+//React basic imports
 import React, {Component} from 'react';
 import Typist from 'react-typist';
 import {Row, Col} from 'react-bootstrap';
-import LoadingBar from '../LoadingBar/loadingBar';
-import './style.css';
-import pepe from '../../pepe2.gif';
 
+//Component imports
+import LoadingBar from '../LoadingBar/loadingBar';
+
+//Media imports
+import pepe from './media/pepe2.gif';
+
+//Style imports
+import './style.css';
+
+/*
+  This component is responsable for rendering the correct
+  initial loading screen, based on the screen width, passed through props.
+*/
 export default class loadingScreen extends Component{
 
   render(){
@@ -69,11 +80,6 @@ Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
                 </span>
               </Typist>
             </Col>
-            <footer className="pl-2 fixed-bottom">
-              <Typist cursor={{show:false}} startDelay={3000}>
-                <span className="h4">&gt;Omer Marquez 2020</span>
-              </Typist>
-            </footer>
           </Row>
   </div>
 )
@@ -92,11 +98,6 @@ Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
               <img src={pepe} alt="Pepe Jumping" className="pepeSize"/>
             </Col>
           </Row>
-          <footer className="pl-2 fixed-bottom">
-            <Typist cursor={{show:false}} startDelay={3000}>
-              <span className="h4">&gt;Omer Marquez 2020</span>
-            </Typist>
-          </footer>
         </div>
       );
     }

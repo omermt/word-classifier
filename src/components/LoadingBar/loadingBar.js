@@ -1,14 +1,21 @@
 import React, {Component} from 'react';
-import Typist from 'react-typist';
-import {Row, Col, Container} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import './style.css';
 
+
+/*
+  This component will be responsible for animation a simple loadingBarbar,
+  it just animate, but doesn't really shows any progress.
+
+  This component automatically deactivate it's animation when the component
+  is unmounted.
+*/
 export default class LoadingBar extends Component{
   constructor(props){
     super(props);
 
     this.state = {
-      currentBar: 0 //Goes from 0 to 12
+      currentBar: 0 //Goes from 0 to 12, initial state
     }
 
     this.theAnimation = this.theAnimation.bind(this);

@@ -1,38 +1,49 @@
+//Basic React import
 import React, {Component} from 'react';
-import './App.css';
-import InConstruction from './components/construction/construction';
-import InitialScreen from './components/InitialScreen/InitialScreen';
-import {Container} from 'react-bootstrap';
 import Typist from 'react-typist';
-import 'react-typist/dist/Typist.css';
+import {Container} from 'react-bootstrap';
+
+//Component imports
+//import InConstruction from './components/Construction/construction';
+import InitialScreen from './components/InitialScreen/InitialScreen';
+import UploadSection from './components/UploadSection/UploadSection';
+import FileEditSection from './components/FileEditSection/FileEdit'
+
+//Style imports
+import 'react-typist/dist/Typist.css'; //Enable blink globally
+import './App.css';
 
 export default class App extends Component {
   constructor(props){
     super(props);
 
-    this.state = {
-      renderBanner: false //Check for screen size here
-    }
+    let mediaQuery = window.matchMedia('(min-width: 768px)');
 
-    this.isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    this.state= {
+        isDesktop: mediaQuery.matches
+    }
     //If window size is less than 768px, treat as movil device
-    //This is the Bootstrap media query
+    //This is the Bootstrap media query for md
+    //Will be passed as prop to children elements
+
+    //If the query state changes, it will rerender what's needed
+    mediaQuery.addListener((e) =>{
+        this.setState({isDesktop: e.matches})
+    })
+
   }
 
-  setInitLoading(){
-    //Check for screen size first
-    if(!this.state.renderBanner /*&& screen-size*/){
-      //Set Timeout here
-      //return (<Banner />);
-    }
-
-    //Screen size movil, show movil loading animation
-    //else here, return loading for movil, set timeout to update
-  }
   render(){
     return (
-      <Container fluid="true" className="TopElement">
-        <InitialScreen isDesktop={this.isDesktop} />
+      <Container fluid className="TopElement min-vh-100">
+        {/*<InitialScreen isDesktop={this.isDesktop} /> Just testing here*/}
+        <UploadSection />
+        {/*<FileEditSection isDesktop={this.state.isDesktop}/>
+          <footer className="pl-2 fixed-bottom">
+            <Typist cursor={{show:false}} startDelay={3000}>
+              <span className="h4">&gt;Omer Marquez 2020</span>
+            </Typist> Take this out when loading the fileEditSection
+          </footer>*/}
       </Container>
     );
   }
