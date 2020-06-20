@@ -36,10 +36,10 @@ export default class App extends Component {
   render(){
     return (
       <Container fluid className="TopElement min-vh-100">
-        {/*<InitialScreen isDesktop={this.isDesktop} /> Just testing here*/}
-        <UploadSection />
-        {/*<FileEditSection isDesktop={this.state.isDesktop}/>
-          <footer className="pl-2 fixed-bottom">
+        {/*<InitialScreen isDesktop={this.isDesktop} /> Just testing here
+        <UploadSection />*/}
+        <FileEditSection isDesktop={this.state.isDesktop}/>
+          {/*<footer className="pl-2 fixed-bottom">
             <Typist cursor={{show:false}} startDelay={3000}>
               <span className="h4">&gt;Omer Marquez 2020</span>
             </Typist> Take this out when loading the fileEditSection

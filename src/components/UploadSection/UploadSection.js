@@ -42,8 +42,8 @@ export default class UploadSection extends Component{
     return(
       <Row>
         {/*Sheet image*/}
-        <Col xs={12} md={6}>
-          <pre className="ascii text-success pt-3">
+        <Col xs={12} md={6} className="mr-n2 mr-sm-0 pl-0">
+          <pre className="ascii text-success pt-3 pl-0 pl-sm-3">
             {`
 
 
@@ -82,14 +82,14 @@ export default class UploadSection extends Component{
         </Col>
         {/*Buttons*/}
         <Col xs={12} md={6}>
-          <Row className="mt-5">
-            <Col xs={6} md={12} role="button" className="mt-5">
+          <Row className="mt-sm-5">
+            <Col xs={6} md={12} role="button" className="mt-0 mt-md-5">
                  <input type="file" hidden ref={this.fileButton}></input>
                  <Typist className="text-info h1 pt-md-4 mt-md-5" cursor={{show: false}}>
                       <span onClick={this.triggerFileButton} className="pt-5 pt-md-0">&gt;Press here to upload a file</span>
                  </Typist>
              </Col>
-             <Col xs={6} md={12} className="mt-5" role="button">
+             <Col xs={6} md={12} className="mt-0 mt-md-5" role="button">
                <Typist className="text-info h1 mt-md-3" startDelay={3900} cursor={{show: false}}>
                   <span>&gt;Or here, to use a test file</span>
                </Typist>
