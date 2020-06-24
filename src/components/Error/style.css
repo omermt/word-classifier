@@ -1,0 +1,15 @@
+.bigText{
+  font-size: 16rem;
+}
+
+@media (max-width: 768px) {/*xs up to md screens*/
+  .errorStackSize{
+    height: 15vh !important;
+  }
+}
+
+@media (min-width: 768px) {/*Md up to Large screen*/
+  .errorStackSize{
+    height: 49vh !important;
+  }
+}

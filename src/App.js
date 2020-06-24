@@ -7,7 +7,8 @@ import {Container} from 'react-bootstrap';
 //import InConstruction from './components/Construction/construction';
 import InitialScreen from './components/InitialScreen/InitialScreen';
 import UploadSection from './components/UploadSection/UploadSection';
-import FileEditSection from './components/FileEditSection/FileEdit'
+import FileEditSection from './components/FileEditSection/FileEdit';
+import Error from './components/Error/Error';
 
 //Style imports
 import 'react-typist/dist/Typist.css'; //Enable blink globally
@@ -37,8 +38,9 @@ export default class App extends Component {
     return (
       <Container fluid className="TopElement min-vh-100">
         {/*<InitialScreen isDesktop={this.isDesktop} /> Just testing here
-        <UploadSection />*/}
-        <FileEditSection isDesktop={this.state.isDesktop}/>
+        <UploadSection />
+        <FileEditSection isDesktop={this.state.isDesktop}/>*/}
+        <Error />
           {/*<footer className="pl-2 fixed-bottom">
             <Typist cursor={{show:false}} startDelay={3000}>
               <span className="h4">&gt;Omer Marquez 2020</span>

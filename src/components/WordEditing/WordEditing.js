@@ -43,7 +43,7 @@ export default class WordEditing extends Component{
           <Col xs={6} className="text-center h1 text-primary" role="button"><div>&rarr;</div>Next Word Button Here</Col>
         </Row>
         <Row>{/*Download .txt doc*/}
-          <Col className="text-success text-center pt-5 h4" role="button">
+          <Col className="text-success text-center pt-5 h4" role="button" xs={12}>
             <p>&darr; Download .txt with the work you have so far</p>
           </Col>
         </Row>
