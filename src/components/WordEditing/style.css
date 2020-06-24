@@ -1,0 +1,15 @@
+input{
+  border-style: inherit;
+  color: inherit;
+  background-color: inherit;
+}
+
+.active{
+  color: black;
+  background-color: white;
+}
+
+.bottomCount{
+  position : absolute;
+  bottom   : 0  ;
+}

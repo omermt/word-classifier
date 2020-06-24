@@ -1,0 +1,7 @@
+.pre{
+  /*<pre> has it's own style, override it with the parent style*/
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  color: inherit;
+}
