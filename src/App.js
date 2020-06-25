@@ -5,6 +5,8 @@ import {Container} from 'react-bootstrap';
 
 //Component imports
 //import InConstruction from './components/Construction/construction';
+import SmallNav from './components/SmallNav/SmallNav';
+import BigNav from './components/BigNav/BigNav';
 import InitialScreen from './components/InitialScreen/InitialScreen';
 import UploadSection from './components/UploadSection/UploadSection';
 import FileEditSection from './components/FileEditSection/FileEdit';
@@ -37,15 +39,16 @@ export default class App extends Component {
   render(){
     return (
       <Container fluid className="TopElement min-vh-100">
+        {this.state.isDesktop? <BigNav /> : <SmallNav /> /*Will be rerendered when needed, move this to App*/}
         {/*<InitialScreen isDesktop={this.isDesktop} /> Just testing here
-        <UploadSection />
-        <FileEditSection isDesktop={this.state.isDesktop}/>*/}
-        <Error />
-          {/*<footer className="pl-2 fixed-bottom">
-            <Typist cursor={{show:false}} startDelay={3000}>
-              <span className="h4">&gt;Omer Marquez 2020</span>
-            </Typist> Take this out when loading the fileEditSection
-          </footer>*/}
+        <UploadSection />*/}
+        <FileEditSection isDesktop={this.state.isDesktop}/>
+        {/*<Error />*/}
+        {this.state.isDesktop? <footer className="pl-2 mt-3 fixed-bottom">
+          <Typist cursor={{show:false}} startDelay={3000}>
+            <span className="h4">&gt;Omer Marquez 2020</span>
+          </Typist>
+        </footer>: ''}
       </Container>
     );
   }
