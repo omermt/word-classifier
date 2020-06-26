@@ -20,67 +20,46 @@ export default class FileEditSection extends Component{
     this.currentWord = "hello";
 
     this.state = {
-      onLeftTop: false
+      toggleState: false
     }
 
     this.onClick = this.onClick.bind(this);
-    this.moveToRight = this.moveToRight.bind(this);
-    this.moveToLeft = this.moveToLeft.bind(this);
+    this.toggleState = this.toggleState.bind(this);
   }
 
   onClick(event){
     const theEvent = event;
     if(theEvent.ctrlKey){
       theEvent.preventDefault();
-      if(theEvent.screenX >= (window.innerWidth/2)){
-        this.moveToRight();
-      }else{
-        this.moveToLeft();
-      }
+      this.toggleState();
     }
   }
 
-  moveToRight(){
-    if(!this.state.onLeftTop){
-      console.debug("Already on Right");
-    }else{
-      console.debug("Moved to Right");
-      this.setState({
-        onLeftTop: false
-      });
-    }
-  }
-
-  moveToLeft(){
-    if(this.state.onLeftTop){
-      console.debug("Already on Left");
-    }else{
-      console.debug("Moved to Left");
-      this.setState({
-        onLeftTop: true
-      });
-    }
+  toggleState(){
+    this.setState((prevState, props) =>{
+       return {toggleState: !prevState.toggleState}
+    })
   }
 
   render(){
     return(
-      <Swipeable onSwipedLeft={this.moveToLeft} onSwipedRight={this.moveToRight}>
-        <Row className="h-100 overflow-hidden" onClick={this.onClick}>
-          <CSSTransition in={this.state.onLeftTop} timeout={3} classNames="FilePreview">
+      <Swipeable onSwipedLeft={this.toggleState}>
+        <Row className="h-100" onClick={this.onClick}>
+          <CSSTransition in={this.state.toggleState} timeout={3} classNames="FilePreview">
             <Col xs={12} md={6} className="mt-2 px-0 positionAbsolute default"> {/*File Preview*/}
              <div className="borderMe mx-0 mx-md-1 vh-custom px-1">
                 <FilePreview file={this.dummyString} currentWord={this.currentWord}/>
               </div>
             </Col>            
           </CSSTransition>
-          <CSSTransition in={!this.state.onLeftTop} timeout={3} classNames="WordEdit">
+          <CSSTransition in={!this.state.toggleState} timeout={3} classNames="WordEdit">
             <Col xs={12} md={6} className="mt-2 px-0 positionAbsolute"> {/*WordEditing*/}
               <div className="borderMe mx-0 mx-md-1 vh-custom px-1">
                 <WordEditing currentWord={this.currentWord}/>
               </div>
             </Col>  
           </CSSTransition>
-          </Row>
+        </Row>
       </Swipeable>
     );
   }

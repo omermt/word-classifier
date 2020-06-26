@@ -20,27 +20,27 @@
   .default{
     left: -70rem;/*Will be overrided by the Animations*/
   }
+
   .WordEdit-enter{
-  	right: -70rem;
+  	left: -70rem;
   }
 
   .WordEdit-enter-done{
-  	right: 0;
-  	transition: right 1000ms;
+  	left: 0;
+  	transition: left 1000ms;
   }
 
   .WordEdit-exit{
-	right: 0;
+	  left: 0;
   }
 
   .WordEdit-exit-done{
-  	right: -70rem;
-  	transition: right 1000ms;
+  	left: -70rem;
+  	transition: left 1000ms;
   }
 
   .FilePreview-enter{
   	left: -70rem;
-  	display: block;
   }
 
   .FilePreview-enter-done{
@@ -49,7 +49,7 @@
   }
 
   .FilePreview-exit{
-	left: 0;
+	  left: 0;
   }
 
   .FilePreview-exit-done{
