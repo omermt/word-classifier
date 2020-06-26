@@ -5,12 +5,63 @@
 
 @media (max-width: 768px) {/*Extra small up to medium*/
   .vh-custom{
-    height: 90vh !important;
+    min-height: 90vh !important;
   }
+
+  /*
+  	Holding this classes and animations here, will ensure that no animation,
+  	or weird behavior happends screens > 768px
+  */
+
+  .positionAbsolute{
+  	position: absolute !important; /*To stack the cols, same row feeling*/
+  }
+
+  .default{
+    left: -70rem;/*Will be overrided by the Animations*/
+  }
+  .WordEdit-enter{
+  	right: -70rem;
+  }
+
+  .WordEdit-enter-done{
+  	right: 0;
+  	transition: right 1000ms;
+  }
+
+  .WordEdit-exit{
+	right: 0;
+  }
+
+  .WordEdit-exit-done{
+  	right: -70rem;
+  	transition: right 1000ms;
+  }
+
+  .FilePreview-enter{
+  	left: -70rem;
+  	display: block;
+  }
+
+  .FilePreview-enter-done{
+  	left: 0;
+  	transition: left 1000ms;
+  }
+
+  .FilePreview-exit{
+	left: 0;
+  }
+
+  .FilePreview-exit-done{
+  	left: -70rem;
+  	transition: left 1000ms;
+  }
+
+
 }
 
 @media (min-width: 768px) {/*Md up to Large screen*/
   .vh-custom{
-    height: 83vh !important;
+    min-height: 83vh !important;
   }
 }

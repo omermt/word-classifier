@@ -13,10 +13,21 @@ export default class FilePreview extends Component{
   }
 
   render(){
+
+    let string = this.dummyTest.split(' ').map(word =>{
+      let theWord = word.toLowerCase()
+      return (
+        <span>
+          <span className={this.props.currentWord === theWord ? 'active': ''}>{word}</span>
+          <span> </span>
+        </span>
+        )
+    });
+
     return (
       <div className="pl-1">
         <h1>File Title Here</h1>
-        <p className="h4"><pre className="pre">{this.dummyTest}</pre></p>
+        <pre className="pre h4">{string}</pre>
       </div>
     );
   }
