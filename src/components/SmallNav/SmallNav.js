@@ -46,13 +46,13 @@ export default class SmallNav extends Component{
   render(){
     return (
       <Row className="borderMe pt-1" as="header">
-        <Col xs={3} className="pl-2 pr-0">
+        <Col xs={4} sm={3} className="pl-2 pr-0">
           <Typist cursor={{show: false}} className="h4">Word Classifier</Typist>
         </Col>
-        <Col xs={6}>
+        <Col xs={4} sm={6}>
           <pre className="text-center h5 pt-1 pre">{this.state.currentString}</pre>
         </Col>
-        <Col xs={3} className="pr-0">
+        <Col xs={4} sm={3} className="pr-0">
           <Typist cursor={{show: false}} className="pt-1">Omer Marquez 2020</Typist>
         </Col>
       </Row>
