@@ -15,6 +15,7 @@
 
   .positionAbsolute{
   	position: absolute !important; /*To stack the cols, same row feeling*/
+    overflow-x: hidden;
   }
 
   .default{
