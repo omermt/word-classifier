@@ -38,9 +38,9 @@ export default class WordEditing extends Component{
             </div>
           </Col>
         </Row>
-        <Row className="pt-4 pt-md-0">{/*Submit button, auto focus, button on movil*/}
-          <Col xs={6} className="text-center h1 text-primary" role="button"><div>&larr;</div>Preview Word Button Here</Col>
-          <Col xs={6} className="text-center h1 text-primary" role="button"><div>&rarr;</div>Next Word Button Here</Col>
+        <Row className="pt-4 pt-md-0 mt-5">{/*Submit button, auto focus, button on movil*/}
+          <Col xs={6} className="text-center h1 text-primary" role="button"><div>&larr;</div>Previous Word</Col>
+          <Col xs={6} className="text-center h1 text-primary" role="button"><div>&rarr;</div>Next Word</Col>
         </Row>
         <Row>{/*Download .txt doc*/}
           <Col className="text-success text-center pt-5 h4" role="button" xs={12}>

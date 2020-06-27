@@ -5,6 +5,7 @@ import {Row, Col} from 'react-bootstrap';
 
 //Component imports
 import LoadingBar from '../LoadingBar/loadingBar';
+import {Context} from '../../context/isDesktopContext';
 
 //Media imports
 import pepe from './media/pepe2.gif';
@@ -12,21 +13,24 @@ import pepe from './media/pepe2.gif';
 //Style imports
 import './style.css';
 
+
 /*
   This component is responsable for rendering the correct
   initial loading screen, based on the screen width, passed through props.
 */
-export default class loadingScreen extends Component{
+class LoadingScreen extends Component{
 
   render(){
-    if(this.props.isDesktop){
+
+    let isDesktop = this.context;
+    if(isDesktop){
       //Big Banner, ASCII Art Letter
       return (
         <div>
           <Row className="pt-md-5">
-          <Col xs={12} md={6} className="pr-0">
-          <div className="bannerBook">
-            <pre className="bannerWordWhite pt-5 pl-md-5 text-success">
+            <Col xs={12} md={6} className="pr-0">
+              <div className="bannerBook">
+                <pre className="bannerWordWhite pt-5 pl-md-5 text-success">
               {`
         @@@@@@@@@@@               @@@@@@@@@@/
       @@@*            @@    ,@@            @@@@
@@ -41,13 +45,13 @@ export default class loadingScreen extends Component{
       @ @*                @                @/ @
       @         @@@@.     @     (@@@@         @
       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@`}
-            </pre>
-          </div>
-          </Col>
-          <Col xs={12} md={6} className="pl-0">
-          <div className="bannerWord">
-            <pre className="bannerWordWhite overflow-hidden pt-md-5 text-primary">
-              {`
+                </pre>
+              </div>
+            </Col>
+            <Col xs={12} md={6} className="pl-0">
+            <div className="bannerWord">
+              <pre className="bannerWordWhite overflow-hidden pt-md-5 text-primary">
+                {`
 
 
 
@@ -68,9 +72,9 @@ d88P  Y88b 888                            Y8P d88P"  Y8P
 888    888 888 .d888888 "Y8888b. "Y8888b. 888 888    888 88888888 888
 Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
  "Y8888P"  888 "Y888888  88888P'  88888P' 888 888    888  "Y8888  888`}
-            </pre>
-          </div>
-          </Col>
+                </pre>
+              </div>
+            </Col>
           </Row>
           <Row>
             <Col className="display-3 text-primary">
@@ -81,18 +85,18 @@ Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
               </Typist>
             </Col>
           </Row>
-  </div>
-)
+        </div>
+      );
     }else{
       //Loading Bar, movil friendly
       return(
         <div className="pt-5">
           <LoadingBar/>
-          <div className="pt-5 text-primary h1 pl-md-5 ml-md-5">
-            <Typist>
-              <span className="pl-md-5 ml-md-3">&gt;Loading, please wait...</span>
-            </Typist>
-          </div>
+            <div className="pt-5 text-primary h1 pl-md-5 ml-md-5">
+              <Typist>
+                <span className="pl-md-5 ml-md-3">&gt;Loading, please wait...</span>
+              </Typist>
+            </div>
           <Row>
             <Col className="d-flex justify-content-center">
               <img src={pepe} alt="Pepe Jumping" className="pepeSize"/>
@@ -103,3 +107,8 @@ Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
     }
   }
 }
+
+
+LoadingScreen.contextType = Context;
+
+export default LoadingScreen;

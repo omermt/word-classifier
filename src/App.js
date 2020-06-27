@@ -22,10 +22,10 @@ export default class App extends Component {
       <ContextProvider>
         <Container fluid className="TopElement min-vh-100">
          <Nav />
-          {/*<InitialScreen isDesktop={this.isDesktop} /> Just testing here
-         <UploadSection />*/}
-          <FileEditSection />
-          {/*<Error />*/}
+          {/*<InitialScreen />*/}
+           <UploadSection />
+         {/*<FileEditSection />
+          <Error />*/}
           <Footer />
         </Container>
       </ContextProvider>

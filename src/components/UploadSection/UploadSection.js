@@ -2,6 +2,8 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import Typist from 'react-typist';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 //Style import
 import './style.css';
@@ -23,7 +25,7 @@ export default class UploadSection extends Component{
     super(props);
 
     //Making use of React's ref, we will access a DOM element using the prop
-    //thus, avoidin using an id, the using the document API directly
+    //thus, avoidin using an id, using the document API directly
     this.fileButton = React.createRef();
 
     this.triggerFileButton = this.triggerFileButton.bind(this);
