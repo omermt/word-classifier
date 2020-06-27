@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import Typist from 'react-typist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faFileAlt, faUpload, faVial } from '@fortawesome/free-solid-svg-icons'
 
 //Style import
 import './style.css';
@@ -28,74 +28,57 @@ export default class UploadSection extends Component{
     //thus, avoidin using an id, using the document API directly
     this.fileButton = React.createRef();
 
+    this.testFile = "Hello, this is a test string.\n To be used by other components";
+
     this.triggerFileButton = this.triggerFileButton.bind(this);
+    this.sendTestFile = this.sendTestFile.bind(this);
+
+    //HTML Classes
+    this.sheetClass = "mr-n2 mr-sm-0 pl-0 text-center ascii";
+    this.uploadClass = "text-info display-4 pt-md-1 mt-md-5 text-center";
+    this.testClass = "mt-0 mt-md-5 text-center text-info display-4 mt-md-3";
   }
 
   //This is the function to trigger a File Search
   triggerFileButton(){
 
     //Since the element to which we apply the ref is a DOM element,
-    //current points directly to that DOM element.
+    //the current attribute points directly to that DOM element.
     //If a class where used instead, it will point to the instance of that class
     this.fileButton.current.click();
   }
 
+  sendTestFile(){
+    this.props.changeState({UploadSection: false, File: this.testFile})
+  }
+
+  HandleFileUpdate(){
+    console.debug(this);
+  }
+
   render(){
     return(
-      <Row>
+      <Row className="mt-md-5 pt-md-4">
         {/*Sheet image*/}
-        <Col xs={12} md={6} className="mr-n2 mr-sm-0 pl-0">
-          <pre className="ascii text-success pt-3 pl-0 pl-sm-3">
-            {`
-
-
-   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   @/                                  @#@@
-   @/                                  @#   @@
-   @/                                  @(     @@
-   @/    @@@@@@@@@@@@@@@*              @/        @@
-   @/                                  @%((((((((((&@*
-   @/    @@@@@@@@@@@@@@@@@@#                        %@
-   @/                                               %@
-   @/                                               %@
-   @/                                               %@
-   @/                                               %@
-   @/                                               %@
-   @/    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        &@
-   @/                                               &@
-   @/    @@@@@@@@@@@@@@@@@@@@@@                     &@
-   @/                                               &@
-   @/    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        @@
-   @/                                               @@
-   @/    @@@@@@@@@@@@@@@@@@@@@@                     @@
-   @/                                               @@
-   @/    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        @@
-   @/                                               @@
-   @/    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        @@
-   @/                                               @@
-   @/    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@        @@
-   @/                                               @&
-   @/                                               @&
-   @/                                               @&
-   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@(
-
-`}
-          </pre>
+        <Col xs={12} md={6} className={this.sheetClass}>
+          <FontAwesomeIcon icon={faFileAlt} />
         </Col>
         {/*Buttons*/}
         <Col xs={12} md={6}>
-          <Row className="mt-sm-5">
-            <Col xs={6} md={12} role="button" className="mt-0 mt-md-5">
-                 <input type="file" hidden ref={this.fileButton}></input>
-                 <Typist className="text-info h1 pt-md-4 mt-md-5" cursor={{show: false}}>
-                      <span onClick={this.triggerFileButton} className="pt-5 pt-md-0">&gt;Press here to upload a file</span>
-                 </Typist>
-             </Col>
-             <Col xs={6} md={12} className="mt-0 mt-md-5" role="button">
-               <Typist className="text-info h1 mt-md-3" startDelay={3900} cursor={{show: false}}>
-                  <span>&gt;Or here, to use a test file</span>
-               </Typist>
-             </Col>
+          <Row>
+            <Col xs={6} md={12} role="button" className={this.uploadClass} onClick={this.triggerFileButton}>
+              <input type="file" hidden ref={this.fileButton} onChange={this.HandleFileUpdate}></input>
+              <Typist cursor={{show: false}}>
+                <div><FontAwesomeIcon icon={faUpload} /></div>
+                <span className="pt-5 pt-md-0">Upload Your File</span>
+              </Typist>
+            </Col>
+            <Col xs={6} md={12} className={this.testClass} role="button" onClick={this.sendTestFile}>
+              <Typist cursor={{show: false}}>
+                <div><FontAwesomeIcon icon={faVial} /></div>
+                <p>Use a Test File</p>
+              </Typist>
+            </Col>
           </Row>
         </Col>
       </Row>

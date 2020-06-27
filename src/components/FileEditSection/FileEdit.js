@@ -9,14 +9,16 @@ import {CSSTransition} from 'react-transition-group';
 import FilePreview from '../FilePreview/FilePreview';
 import WordEditing from '../WordEditing/WordEditing';
 
+import {Context} from '../../context/isDesktopContext';
+
 //Style imports
 import './style.css';
 
-export default class FileEditSection extends Component{
+class FileEditSection extends Component{
   constructor(props){
     super(props);
 
-    this.dummyString = "Hello, this is a test string.\n To be used by other components";
+    this.dummyString = this.props.File;
     this.currentWord = "hello";
 
     this.state = {
@@ -28,23 +30,33 @@ export default class FileEditSection extends Component{
   }
 
   onClick(event){
+    /*
+      This event is registered in the Capturing Phase,
+      this means that this handler will fire first, then the
+      event will go down to the target, and then up,
+      in the bubbling phase
+    */
+    console.debug('FileEdit Event Fired');
     const theEvent = event;
     if(theEvent.ctrlKey){
-      theEvent.preventDefault();
+      theEvent.stopPropagation(); //Prevent the bubbling phase
       this.toggleState();
     }
   }
 
   toggleState(){
+    console.debug('Shift performed');
     this.setState((prevState, props) =>{
        return {toggleState: !prevState.toggleState}
+       //Literally toggle the state
     })
   }
 
   render(){
+    let isDesktop = this.context;
     return(
-      <Swipeable onSwipedLeft={this.toggleState}>
-        <Row className="h-100" onClick={this.onClick}>
+      <Swipeable delta={150} onSwipedLeft={this.toggleState /*Only works on movil or tablet, sholud render small, no need for test*/}>
+        <Row className="h-100 overflow" onClickCapture={isDesktop? ()=>{}: this.onClick /*Only set the option if window resized*/}>
           <CSSTransition in={this.state.toggleState} timeout={3} classNames="FilePreview">
             <Col xs={12} md={6} className="mt-2 px-0 positionAbsolute default"> {/*File Preview*/}
              <div className="borderMe mx-0 mx-md-1 vh-custom px-1">
@@ -55,7 +67,7 @@ export default class FileEditSection extends Component{
           <CSSTransition in={!this.state.toggleState} timeout={3} classNames="WordEdit">
             <Col xs={12} md={6} className="mt-2 px-0 positionAbsolute"> {/*WordEditing*/}
               <div className="borderMe mx-0 mx-md-1 vh-custom px-1">
-                <WordEditing currentWord={this.currentWord}/>
+                <WordEditing currentWord={this.currentWord} changeState={this.props.changeState}/>
               </div>
             </Col>  
           </CSSTransition>
@@ -64,3 +76,8 @@ export default class FileEditSection extends Component{
     );
   }
 }
+
+
+FileEditSection.contextType = Context;
+
+export default FileEditSection;

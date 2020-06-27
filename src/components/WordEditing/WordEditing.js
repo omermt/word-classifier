@@ -23,8 +23,7 @@ export default class WordEditing extends Component{
             <Typist cursor={{show:false}} st>&gt; Grammatical Classification </Typist>
             <div className="inputStyle pl-3 text-info">
               &gt;
-              <input type="text" placeholder="Add Grammatical Category Here" className="w-75"></input>
-              {/*<FontAwesomeIcon icon={faArrowAltCircleUp} className="h4 mb-0" role="button"/>*/}
+              <input type="text" placeholder="Add Grammatical Category" className="w-75"></input>
             </div>
           </Col>
         </Row>
@@ -33,18 +32,22 @@ export default class WordEditing extends Component{
             <Typist cursor={{show:false}} st>&gt; Description of the Word</Typist>
             <div className="inputStyle pl-3 text-info">
               &gt;
-              <input type="text" placeholder="Optional, will fill to 'word' by default" className="w-75"></input>
-              {/*<FontAwesomeIcon icon={faArrowAltCircleUp} className="h4 mb-0" role="button"/>*/}
+              <input type="text" placeholder="Optional, 'word' by default" className="w-75"></input>
             </div>
           </Col>
         </Row>
         <Row className="pt-4 pt-md-0 mt-5">{/*Submit button, auto focus, button on movil*/}
-          <Col xs={6} className="text-center h1 text-primary" role="button"><div>&larr;</div>Previous Word</Col>
-          <Col xs={6} className="text-center h1 text-primary" role="button"><div>&rarr;</div>Next Word</Col>
+          <Col className="text-center h1 text-primary" role="button"><div>&rarr;</div>Next Word</Col>
         </Row>
-        <Row>{/*Download .txt doc*/}
-          <Col className="text-success text-center pt-5 h4" role="button" xs={12}>
-            <p>&darr; Download .txt with the work you have so far</p>
+        <Row>
+          <Col xs={6} className="text-danger text-center pt-2 h4" role="button"
+            onClick={()=>{console.debug('WordEditing Event Fired');this.props.changeState({UploadSection: true, File: false})}}>
+            <div>&larr;</div>
+            Upload Another File
+          </Col>{/*Download .txt doc*/}
+          <Col xs={6} className="text-success text-center pt-2 h4" role="button">
+            <div>&darr;</div>
+            <div>Download .txt with the work you have so far</div>
           </Col>
         </Row>
         <Row className="w-100 h5 pl-md-4 pl-1 pt-3 pt-md-0">{/*Status Here*/}

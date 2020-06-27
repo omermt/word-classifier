@@ -20,6 +20,12 @@ import './style.css';
 */
 class LoadingScreen extends Component{
 
+  constructor(props){
+    super(props);
+
+    this.bannerClass = "bannerWordWhite overflow-hidden pt-md-5 text-primary";
+    this.initialLoadingClass = "pt-5 text-primary h1 pl-md-5 ml-md-5";
+  }
   render(){
 
     let isDesktop = this.context;
@@ -50,7 +56,7 @@ class LoadingScreen extends Component{
             </Col>
             <Col xs={12} md={6} className="pl-0">
             <div className="bannerWord">
-              <pre className="bannerWordWhite overflow-hidden pt-md-5 text-primary">
+              <pre className={this.bannerClass}>
                 {`
 
 
@@ -92,7 +98,7 @@ Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
       return(
         <div className="pt-5">
           <LoadingBar/>
-            <div className="pt-5 text-primary h1 pl-md-5 ml-md-5">
+            <div className={this.initialLoadingClass}>
               <Typist>
                 <span className="pl-md-5 ml-md-3">&gt;Loading, please wait...</span>
               </Typist>

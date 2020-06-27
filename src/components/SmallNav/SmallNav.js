@@ -26,7 +26,10 @@ export default class SmallNav extends Component{
   componentDidMount(){
 
     let index = 0;
-
+    /*
+      Since setInterval will call a function which references this variable,
+      index will be a permanent reference
+    */
     this.stringInterval = setInterval(()=>{
       this.setState({currentString: getString()})
     }, 500);
