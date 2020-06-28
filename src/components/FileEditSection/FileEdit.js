@@ -18,15 +18,14 @@ class FileEditSection extends Component{
   constructor(props){
     super(props);
 
-    this.dummyString = this.props.File;
-    this.currentWord = "hello";
-
     this.state = {
-      toggleState: false
+      toggleState: false,
+      currentWord: ''
     }
 
     this.onClick = this.onClick.bind(this);
     this.toggleState = this.toggleState.bind(this);
+    this.changeWord = this.changeWord.bind(this);
   }
 
   onClick(event){
@@ -52,6 +51,10 @@ class FileEditSection extends Component{
     })
   }
 
+  changeWord(word){
+    this.setState({currentWord: word});
+  }
+
   render(){
     let isDesktop = this.context;
     return(
@@ -59,15 +62,15 @@ class FileEditSection extends Component{
         <Row className="h-100 overflow" onClickCapture={isDesktop? ()=>{}: this.onClick /*Only set the option if window resized*/}>
           <CSSTransition in={this.state.toggleState} timeout={3} classNames="FilePreview">
             <Col xs={12} md={6} className="mt-2 px-0 positionAbsolute default"> {/*File Preview*/}
-             <div className="borderMe mx-0 mx-md-1 vh-custom px-1">
-                <FilePreview file={this.dummyString} currentWord={this.currentWord}/>
+             <div className="borderMe mx-0 mx-md-1 fileSection px-1">
+                <FilePreview file={this.props.file} currentWord={this.state.currentWord}/>
               </div>
             </Col>            
           </CSSTransition>
           <CSSTransition in={!this.state.toggleState} timeout={3} classNames="WordEdit">
             <Col xs={12} md={6} className="mt-2 px-0 positionAbsolute"> {/*WordEditing*/}
               <div className="borderMe mx-0 mx-md-1 vh-custom px-1">
-                <WordEditing currentWord={this.currentWord} changeState={this.props.changeState}/>
+                <WordEditing currentWord={this.state.currentWord.toLowerCase()} changeState={this.props.changeState} changeWord={this.changeWord} file={this.props.file}/>
               </div>
             </Col>  
           </CSSTransition>

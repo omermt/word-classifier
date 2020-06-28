@@ -9,13 +9,97 @@ import { faArrowAltCircleUp } from '@fortawesome/free-solid-svg-icons'*/
 import './style.css';
 
 export default class WordEditing extends Component{
+  
+  constructor(props){
+    super(props);
+
+    this.changeWord = this.changeWord.bind(this);
+    this.nextWord = this.nextWord.bind(this);
+    this.downloadProgress = this.downloadProgress.bind(this);
+
+    this.index = 0;
+    this.fileLength = this.props.file.forWordEditing.length;
+
+    this.grammaticalInput = React.createRef();
+    this.descriptionInput = React.createRef();
+    this.downloadLink = React.createRef();
+    this.wordObject = {}
+  }
+
+  changeWord(next){
+
+    if(next){
+      if(this.index < this.fileLength){
+        this.props.changeWord(this.props.file.forWordEditing[this.index]);
+        this.index ++;
+      }else{
+        this.props.changeWord('Done!');
+      }
+    }else{
+      if(this.index){
+        this.index --;
+        this.props.changeWord(this.props.file.forWordEditing[this.index]);
+      }
+    }
+  }
+
+  downloadProgress(){
+    let finalText = '';
+
+    Object.keys(this.wordObject).forEach(word =>{
+      const wordInstance = this.wordObject[word];
+      finalText +=`Word: ${word} - Grammatical Classification: ${wordInstance.classification} - Description: ${wordInstance.description}\n - Times Repeated: ${wordInstance.times}\n`;
+    });
+
+    const fileURL = URL.createObjectURL(new Blob([finalText], {type:'text/plain'}));
+    this.downloadLink.current.href = fileURL;//Yess
+    this.downloadLink.current.click();
+    console.debug(this.downloadLink.current);
+  }
+
+  nextWord(){
+    this.wordObject[this.props.currentWord] = {
+      grammaticalCategory: this.grammaticalInput.current.value,
+      description: this.descriptionInput.current.value,
+      times: 1
+    }
+
+    console.log("New Word Added:", this.props.currentWord);
+    console.log(this.wordObject[this.props.currentWord]);
+
+    this.changeWord(true);
+  }
+
+  componentDidMount(){
+    this.changeWord(true);
+  }
+
+  componentDidUpdate(){
+    let wordInstance = this.wordObject[this.props.currentWord];
+    if(wordInstance){
+      wordInstance.times ++;
+      this.changeWord(true);
+    }
+  }
+
+  /*componentWillUpdate(){
+    console.debug("WordEditing will Update ");
+    console.debug("Word: ", this.props.currentWord);
+    let wordInstance = this.wordObject[this.props.currentWord];
+    if(wordInstance){
+      console.debug("Updating the input values");
+      this.grammaticalCategory = wordInstance.grammaticalCategory;
+      this.description = wordInstance.description;
+    }
+  }*/
 
   render(){
     return (
       <div>
         <Row className="h1 py-2 w-100">{/*Word Preview*/}
           <Col xs={{span: 'auto'}}>
-            <Typist cursor={{show:false}}>&gt; Current Word: <span className="active">The Word</span> </Typist>
+            <span>&gt; Current Word: </span>
+            <span className="active">{this.props.currentWord}</span>
           </Col>
         </Row>
         <Row className="h3 w-100">{/*Add Grammatical Class*/}
@@ -23,7 +107,8 @@ export default class WordEditing extends Component{
             <Typist cursor={{show:false}} st>&gt; Grammatical Classification </Typist>
             <div className="inputStyle pl-3 text-info">
               &gt;
-              <input type="text" placeholder="Add Grammatical Category" className="w-75"></input>
+              <input type="text" placeholder="Add Grammatical Category" 
+                className="w-75" ref={this.grammaticalInput}></input>
             </div>
           </Col>
         </Row>
@@ -32,22 +117,27 @@ export default class WordEditing extends Component{
             <Typist cursor={{show:false}} st>&gt; Description of the Word</Typist>
             <div className="inputStyle pl-3 text-info">
               &gt;
-              <input type="text" placeholder="Optional, 'word' by default" className="w-75"></input>
+              <input type="text" placeholder="Optional, 'word' by default" 
+                className="w-75" ref={this.descriptionInput}></input>
             </div>
           </Col>
         </Row>
-        <Row className="pt-4 pt-md-0 mt-5">{/*Submit button, auto focus, button on movil*/}
-          <Col className="text-center h1 text-primary" role="button"><div>&rarr;</div>Next Word</Col>
+        <Row className="pt-4 pt-md-0 mt-5">{/*Submit button*/}
+          <Col xs={12} className="text-center h1 text-primary" role="button" onClick={this.nextWord}>
+            <div>&rarr;</div>
+            Next Word
+          </Col>
         </Row>
         <Row>
           <Col xs={6} className="text-danger text-center pt-2 h4" role="button"
-            onClick={()=>{console.debug('WordEditing Event Fired');this.props.changeState({UploadSection: true, File: false})}}>
+            onClick={()=>this.props.changeState({UploadSection: true, File: false})}>
             <div>&larr;</div>
             Upload Another File
           </Col>{/*Download .txt doc*/}
-          <Col xs={6} className="text-success text-center pt-2 h4" role="button">
+          <Col xs={6} className="text-success text-center pt-2 h4" role="button" onClick={this.downloadProgress}>
             <div>&darr;</div>
             <div>Download .txt with the work you have so far</div>
+            <a className="d-none" ref={this.downloadLink} href="" download="output.txt">I'm hidden, shhhh</a>
           </Col>
         </Row>
         <Row className="w-100 h5 pl-md-4 pl-1 pt-3 pt-md-0">{/*Status Here*/}

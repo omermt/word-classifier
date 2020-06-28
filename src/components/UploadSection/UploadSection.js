@@ -11,7 +11,7 @@ import './style.css';
 //Components
 import LoadingBar from '../LoadingBar/loadingBar';
 
-import {configEvents, reader} from './readFunctions.js';
+import {configEvents, reader, analyzeText} from './readFunctions.js';
 
 /*
     This component will handle the loading of a file, given by the user,
@@ -33,7 +33,7 @@ export default class UploadSection extends Component{
     //thus, avoidin using an id, using the document API directly
     this.fileButton = React.createRef();
 
-    this.testFile = "Hello, this is a test string.\n To be used by other components";
+    this.testFile = "Hello, this this is a test string.\nTo be used by other components";
 
     this.triggerFileButton = this.triggerFileButton.bind(this);
     this.sendTestFile = this.sendTestFile.bind(this);
@@ -48,6 +48,7 @@ export default class UploadSection extends Component{
     this.state = {
       isLoading: false,
       isAborted: false,
+      isLoaded: false,
       loadingText: 'Test Loading, please Finish Me'
     }
   }
@@ -62,12 +63,12 @@ export default class UploadSection extends Component{
   }
 
   sendTestFile(){
-    this.props.changeState({UploadSection: false, File: this.testFile})
+    this.fileName = 'test.txt';
+    analyzeText(this.testFile, this);
   }
 
   HandleFileUpdate(event){
-    let target = event.target;
-    let file = target.files[0];
+    let file = event.target.files[0];
     console.debug(file);
     this.fileName = file.name;
     reader.readAsText(file);
@@ -112,11 +113,9 @@ export default class UploadSection extends Component{
       <div className="pt-5">
           <LoadingBar/>
           <div className={this.initialLoadingClass}>
-            <Typist>
-              <span className="pl-md-5 ml-md-3">&gt;{this.state.loadingText}</span>
-            </Typist>
+            <span className="pl-md-5 ml-md-3">&gt;{this.state.loadingText}</span>
           </div>
-          <div role="button" onClick={this.onAbort} className="pt-5 text-center text-danger h1">Click Here to Abort</div>
+          {this.state.isLoaded? '' :<div role="button" onClick={this.onAbort} className="pt-5 text-center text-danger h1">Click Here to Abort</div>}
         </div>
     );
   }

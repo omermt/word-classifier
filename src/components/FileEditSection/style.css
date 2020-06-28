@@ -6,6 +6,7 @@
 .overflow{
   overflow-x: hidden;
 }
+
 @media (max-width: 768px) {/*Extra small up to medium*/
   .vh-custom{
     min-height: 90vh !important;
@@ -61,11 +62,21 @@
   	transition: left 1000ms;
   }
 
+  .fileSection{
+    overflow-y: auto;
+    height: 90vh !important;
+  }
+
 
 }
 
 @media (min-width: 768px) {/*Md up to Large screen*/
   .vh-custom{
     min-height: 83vh !important;
+  }
+
+  .fileSection{
+    overflow-y: auto;
+    height: 83vh !important;
   }
 }
