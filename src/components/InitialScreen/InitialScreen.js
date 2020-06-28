@@ -29,9 +29,7 @@ class LoadingScreen extends Component{
   render(){
 
     let isDesktop = this.context;
-    if(isDesktop){
-      //Big Banner, ASCII Art Letter
-      return (
+    if(isDesktop)return (//Big Banner, ASCII Art Letter
         <div>
           <Row className="pt-md-5">
             <Col xs={12} md={6} className="pr-0">
@@ -93,7 +91,6 @@ Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
           </Row>
         </div>
       );
-    }else{
       //Loading Bar, movil friendly
       return(
         <div className="pt-5">
@@ -110,7 +107,6 @@ Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
           </Row>
         </div>
       );
-    }
   }
 }
 

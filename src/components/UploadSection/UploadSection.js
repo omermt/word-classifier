@@ -3,10 +3,15 @@ import React, {Component} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import Typist from 'react-typist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFileAlt, faUpload, faVial } from '@fortawesome/free-solid-svg-icons'
+import { faFileAlt, faUpload, faVial, faExclamation } from '@fortawesome/free-solid-svg-icons'
 
 //Style import
 import './style.css';
+
+//Components
+import LoadingBar from '../LoadingBar/loadingBar';
+
+import {configEvents, reader} from './readFunctions.js';
 
 /*
     This component will handle the loading of a file, given by the user,
@@ -32,11 +37,19 @@ export default class UploadSection extends Component{
 
     this.triggerFileButton = this.triggerFileButton.bind(this);
     this.sendTestFile = this.sendTestFile.bind(this);
+    this.HandleFileUpdate = this.HandleFileUpdate.bind(this);
 
     //HTML Classes
     this.sheetClass = "mr-n2 mr-sm-0 pl-0 text-center ascii";
     this.uploadClass = "text-info display-4 pt-md-1 mt-md-5 text-center";
     this.testClass = "mt-0 mt-md-5 text-center text-info display-4 mt-md-3";
+    this.initialLoadingClass = "pt-5 text-primary h1 pl-md-5 ml-md-5";
+
+    this.state = {
+      isLoading: false,
+      isAborted: false,
+      loadingText: 'Test Loading, please Finish Me'
+    }
   }
 
   //This is the function to trigger a File Search
@@ -52,22 +65,33 @@ export default class UploadSection extends Component{
     this.props.changeState({UploadSection: false, File: this.testFile})
   }
 
-  HandleFileUpdate(){
-    console.debug(this);
+  HandleFileUpdate(event){
+    let target = event.target;
+    let file = target.files[0];
+    console.debug(file);
+    this.fileName = file.name;
+    reader.readAsText(file);
+  }
+
+  componentDidMount(){
+    configEvents(this);
   }
 
   render(){
-    return(
+    if(!this.state.isLoading) return(
       <Row className="mt-md-5 pt-md-4">
         {/*Sheet image*/}
         <Col xs={12} md={6} className={this.sheetClass}>
-          <FontAwesomeIcon icon={faFileAlt} />
+          {!(this.state.isAborted)? <FontAwesomeIcon icon={faFileAlt} />:
+          <div className="text-danger pt-"><FontAwesomeIcon icon={faExclamation} />
+          <div className="h1">File Reading Aborted</div></div>
+          }
         </Col>
         {/*Buttons*/}
         <Col xs={12} md={6}>
           <Row>
             <Col xs={6} md={12} role="button" className={this.uploadClass} onClick={this.triggerFileButton}>
-              <input type="file" hidden ref={this.fileButton} onChange={this.HandleFileUpdate}></input>
+              <input type="file" hidden ref={this.fileButton} onChange={this.HandleFileUpdate} accept=".txt" />
               <Typist cursor={{show: false}}>
                 <div><FontAwesomeIcon icon={faUpload} /></div>
                 <span className="pt-5 pt-md-0">Upload Your File</span>
@@ -82,6 +106,18 @@ export default class UploadSection extends Component{
           </Row>
         </Col>
       </Row>
+    );
+
+    return(
+      <div className="pt-5">
+          <LoadingBar/>
+          <div className={this.initialLoadingClass}>
+            <Typist>
+              <span className="pl-md-5 ml-md-3">&gt;{this.state.loadingText}</span>
+            </Typist>
+          </div>
+          <div role="button" onClick={this.onAbort} className="pt-5 text-center text-danger h1">Click Here to Abort</div>
+        </div>
     );
   }
 }
