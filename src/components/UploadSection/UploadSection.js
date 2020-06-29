@@ -62,6 +62,10 @@ export default class UploadSection extends Component{
     this.fileButton.current.click();
   }
 
+  /*
+    "Send" means to send the File content to the App components. To decide
+    what to be done is up to the parent.
+  */
   sendTestFile(){
     this.fileName = 'test.txt';
     analyzeText(this.testFile, this);
@@ -70,17 +74,21 @@ export default class UploadSection extends Component{
   HandleFileUpdate(event){
     let file = event.target.files[0];
     console.debug(file);
+
+    if(file.type !== "text/plain") return this.setState({error: "Only .txt files are allowed"});
+    
     this.fileName = file.name;
     reader.readAsText(file);
   }
 
   componentDidMount(){
-    configEvents(this);
+    configEvents(this); //Add listeners to file events
   }
 
   render(){
+    if(this.state.error) throw new Error(this.state.error);
     if(!this.state.isLoading) return(
-      <Row className="mt-md-5 pt-md-4">
+      <Row className="mt-2 mt-md-5 pt-0 pt-md-4">
         {/*Sheet image*/}
         <Col xs={12} md={6} className={this.sheetClass}>
           {!(this.state.isAborted)? <FontAwesomeIcon icon={faFileAlt} />:
@@ -105,6 +113,11 @@ export default class UploadSection extends Component{
               </Typist>
             </Col>
           </Row>
+        </Col>
+        <Col xs={12}>
+          <aside className="text-center text-warning h4 pt-3">
+            Only .txt file allowed
+          </aside>
         </Col>
       </Row>
     );

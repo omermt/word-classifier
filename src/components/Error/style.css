@@ -1,6 +1,6 @@
 @media (max-width: 768px) {/*xs up to md screens*/
   .errorStackSize{
-    height: 15vh !important;
+    height: 25vh !important;
   }
 
   .sadFace{

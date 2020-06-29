@@ -26,8 +26,9 @@ class LoadingScreen extends Component{
     this.bannerClass = "bannerWordWhite overflow-hidden pt-md-5 text-primary";
     this.initialLoadingClass = "pt-5 text-primary h1 pl-md-5 ml-md-5";
   }
-  render(){
 
+
+  render(){
     let isDesktop = this.context;
     if(isDesktop)return (//Big Banner, ASCII Art Letter
         <div>
@@ -89,6 +90,9 @@ Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
               </Typist>
             </Col>
           </Row>
+          <aside className="text-center text-warning h4">
+            Acctually, nothing is been loaded, just for animation purposes.
+          </aside>
         </div>
       );
       //Loading Bar, movil friendly
@@ -105,6 +109,9 @@ Y88b  d88P 888 888  888      X88      X88 888 888    888 Y8b.     888
               <img src={pepe} alt="Pepe Jumping" className="pepeSize"/>
             </Col>
           </Row>
+          <aside className="text-center text-warning h4">
+            Actually, nothing is been loaded, just for animation purposes.
+          </aside>
         </div>
       );
   }

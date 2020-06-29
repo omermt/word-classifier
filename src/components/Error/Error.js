@@ -24,20 +24,22 @@ export default class Error extends Component{
             </Col>
           </Row>
           <Row>
-          <Col xs={{span: 12, order:'last'}} md={{span:6, order:'first'}} role="button" className="text-primary h1 pt-1">
+          <Col xs={{span: 12, order:'last'}} md={{span:6, order:'first'}} role="button" className="text-primary h1 pt-1" 
+            onClick={()=>{this.props.changeState({Error: false, UploadSection:true})}}>
             <Typist cursor={{show:false}} className="d-none d-md-block display-4 text-center">
               <div><FontAwesomeIcon icon={faArrowAltCircleLeft} /></div>
               Go to File Uploading Section
             </Typist>
-            <Typist cursor={{show:false}} className="d-block d-md-none h1">
+            <Typist cursor={{show:false}} className="d-block d-md-none h1 text-center pt-3">
              <div><FontAwesomeIcon icon={faArrowAltCircleLeft} /></div>
               Go to File Uploading Section
             </Typist>
           </Col>
           <Col xs={{span: 12, order:'first'}} md={{span:6, order:'last'}} className="h2 errorStackSize overflow-auto">
+            <h2>{this.props.error.name}</h2>
             <p>
-              Error Stack Trace
-              {this.props.error}
+              Error Stack Trace <br />
+              {this.props.error.StackTrace}
             </p>
           </Col>
         </Row>

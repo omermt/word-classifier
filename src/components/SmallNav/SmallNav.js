@@ -7,39 +7,43 @@ import {getString, setNewString} from './functions';
 //Style imports
 import './style.css';
 
+
 export default class SmallNav extends Component{
 
-    //Populate instructions to display in the center of the nav
+
   constructor(props){
     super(props);
 
     this.instructionsArray = [
       'Swipe Left to change Layout on WordEditing Section',
+      'Or CTRL + Click on Screen',
       'Everything ok?'
     ];
 
     this.state = {
+      //Populate initial String
       currentString: getString()
     }
   }
 
   componentDidMount(){
 
-    let index = 0;
+    let index = 0; //Keep track of the instructionsArray
     /*
       Since setInterval will call a function which references this variable,
       index will be a permanent reference
     */
     this.stringInterval = setInterval(()=>{
       this.setState({currentString: getString()})
-    }, 500);
+    }, 300);
 
     this.changeWordInterval = setInterval(()=>{
       if(index === this.instructionsArray.length){ index = 0;}
       setNewString(this.instructionsArray[index]);
       index ++;
-    }, 30000);
+    }, 30000); //Change String every 30 seconds
   }
+
 
   componentWillUnmount(){
     clearInterval(this.stringInterval);

@@ -48,6 +48,7 @@ class FileEditSection extends Component{
     this.setState((prevState, props) =>{
        return {toggleState: !prevState.toggleState}
        //Literally toggle the state
+       //A functions is used to make sure that the current state is used
     })
   }
 

@@ -2,48 +2,43 @@
 import React, {Component} from 'react';
 import Typist from 'react-typist';
 import {Row, Col} from 'react-bootstrap';
-/*import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowAltCircleUp } from '@fortawesome/free-solid-svg-icons'*/
 
 //Style imports
 import './style.css';
+
 
 export default class WordEditing extends Component{
   
   constructor(props){
     super(props);
 
-    this.changeWord = this.changeWord.bind(this);
+    this.requestNewWord = this.requestNewWord.bind(this);
     this.nextWord = this.nextWord.bind(this);
     this.downloadProgress = this.downloadProgress.bind(this);
 
     this.index = 0;
     this.fileLength = this.props.file.forWordEditing.length;
+    this.wordObject = {}
 
     this.grammaticalInput = React.createRef();
     this.descriptionInput = React.createRef();
     this.downloadLink = React.createRef();
-    this.wordObject = {}
-
   }
 
-  changeWord(next){
 
-    if(next){
-      if(this.index < this.fileLength){
-        this.props.changeWord(this.props.file.forWordEditing[this.index]);
-        this.index ++;
-      }else{
-        this.props.changeWord('Click Again to produce an error');
-      }
+  requestNewWord(){
+
+    if(this.index < this.fileLength){
+      this.props.changeWord(this.props.file.forWordEditing[this.index]);
+      this.index ++;
     }else{
-      if(this.index){
-        this.index --;
-        this.props.changeWord(this.props.file.forWordEditing[this.index]);
-      }
+      this.props.changeWord('Click Again to produce an error');
     }
   }
 
+  /*
+    Download a .txt containing the work the user has done
+  */
   downloadProgress(){
     let finalText = '';
 
@@ -65,23 +60,42 @@ export default class WordEditing extends Component{
       times: 1
     }
 
-    console.log("New Word Added:", this.props.currentWord);
-    console.log(this.wordObject[this.props.currentWord]);
+    console.debug("New Word Added:", this.props.currentWord);
+    console.debug(this.wordObject[this.props.currentWord]);
 
-    this.changeWord(true);
+    this.requestNewWord();
   }
+
 
   componentDidMount(){
-    this.changeWord(true);
+    this.requestNewWord();
+    //Populate the initial word
   }
 
+
+  /*
+    Every time a new word is passed down via props, this method
+    is triggered.
+
+    componentDidUpdate will make sure that the word passed is not a word
+    the user already added (repeated).
+
+    In that case, the "times" counter, in the word instance, will be 
+    incremented by 1 and a new word will be requested.
+
+    This has a bug, when the user finished, a fixed message will be displayed,
+    if the user clicks "next" again, an infinite loop will be created here.
+
+    This was left here for demostrational porpuses of the Error section.
+  */
   componentDidUpdate(){
     let wordInstance = this.wordObject[this.props.currentWord];
     if(wordInstance && (this.props.currentWord !== this.LastWord)){
       wordInstance.times ++;
-      this.changeWord(true);
+      this.requestNewWord(true);
     }
   }
+
 
   render(){
     return (
@@ -98,7 +112,7 @@ export default class WordEditing extends Component{
             <div className="inputStyle pl-3 text-info">
               &gt;
               <input type="text" placeholder="Add Grammatical Category" 
-                className="w-75" ref={this.grammaticalInput}></input>
+                className="w-75" ref={this.grammaticalInput} />
             </div>
           </Col>
         </Row>
@@ -132,9 +146,9 @@ export default class WordEditing extends Component{
         </Row>
         <Row className="w-100 h5 pl-md-4 pl-1 pt-3 pt-md-0">{/*Status Here*/}
           <Col xs={12}>Word Info:</Col>
-          <Col xs={4}>Current: 9999</Col>
-          <Col xs={4}>Total: 9999</Col>
-          <Col xs={4}>Left: 9999</Col>
+          <Col xs={4}>Current: {this.index}</Col>
+          <Col xs={4}>Total: {this.fileLength}</Col>
+          <Col xs={4}>Left: {this.fileLength - this.index}</Col>
         </Row>
       </div>
     );
