@@ -24,6 +24,7 @@ export default class WordEditing extends Component{
     this.descriptionInput = React.createRef();
     this.downloadLink = React.createRef();
     this.wordObject = {}
+
   }
 
   changeWord(next){
@@ -33,7 +34,7 @@ export default class WordEditing extends Component{
         this.props.changeWord(this.props.file.forWordEditing[this.index]);
         this.index ++;
       }else{
-        this.props.changeWord('Done!');
+        this.props.changeWord('Click Again to produce an error');
       }
     }else{
       if(this.index){
@@ -76,22 +77,11 @@ export default class WordEditing extends Component{
 
   componentDidUpdate(){
     let wordInstance = this.wordObject[this.props.currentWord];
-    if(wordInstance){
+    if(wordInstance && (this.props.currentWord !== this.LastWord)){
       wordInstance.times ++;
       this.changeWord(true);
     }
   }
-
-  /*componentWillUpdate(){
-    console.debug("WordEditing will Update ");
-    console.debug("Word: ", this.props.currentWord);
-    let wordInstance = this.wordObject[this.props.currentWord];
-    if(wordInstance){
-      console.debug("Updating the input values");
-      this.grammaticalCategory = wordInstance.grammaticalCategory;
-      this.description = wordInstance.description;
-    }
-  }*/
 
   render(){
     return (

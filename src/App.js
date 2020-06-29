@@ -46,6 +46,20 @@ export default class App extends Component {
       this.setState({InitialScreen: false, UploadSection: true})
     }, 10000);
   }
+
+  componentDidCatch(error, info){
+    this.setState({
+      InitialScreen: false,
+      UploadSection: false,
+      File: false,
+      Error: info.componentStack
+    });
+
+    console.log('Error Ocurred');
+    console.log('Error: ', error);
+    console.log('Error Info: ', info);
+  }
+
   render(){
     let currentSection = () =>{
       //Return the component needed according to the State
