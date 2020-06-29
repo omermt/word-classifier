@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "45cbc6a22779e7118fca350ff3a356a4",
+    "revision": "9a159e47b8ef4afd472897d29293afa1",
     "url": "/word-classifier/index.html"
   },
   {
-    "revision": "0094029afaf874cacf78",
+    "revision": "bdb519a5aceacf5c6372",
     "url": "/word-classifier/static/css/2.cc1a181b.chunk.css"
   },
   {
-    "revision": "26d911bde350e09eff86",
-    "url": "/word-classifier/static/css/main.b5ee7e16.chunk.css"
+    "revision": "809b9de3ebf223d76081",
+    "url": "/word-classifier/static/css/main.aaa8f512.chunk.css"
   },
   {
-    "revision": "0094029afaf874cacf78",
-    "url": "/word-classifier/static/js/2.8d9d014d.chunk.js"
+    "revision": "bdb519a5aceacf5c6372",
+    "url": "/word-classifier/static/js/2.58f56786.chunk.js"
   },
   {
     "revision": "5ac48c47bb3912b14c2d8de4f56d5ae8",
-    "url": "/word-classifier/static/js/2.8d9d014d.chunk.js.LICENSE.txt"
+    "url": "/word-classifier/static/js/2.58f56786.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "26d911bde350e09eff86",
-    "url": "/word-classifier/static/js/main.6a1d78a7.chunk.js"
+    "revision": "809b9de3ebf223d76081",
+    "url": "/word-classifier/static/js/main.6022abce.chunk.js"
   },
   {
     "revision": "2c615e8d1f3f267689a4",
