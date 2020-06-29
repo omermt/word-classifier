@@ -1,6 +1,5 @@
 //React basic imports
 import React, {Component} from 'react';
-import Typist from 'react-typist';
 import {Row, Col} from 'react-bootstrap';
 import {Swipeable} from 'react-swipeable';
 import {CSSTransition} from 'react-transition-group';

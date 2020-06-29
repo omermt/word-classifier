@@ -141,7 +141,7 @@ export default class WordEditing extends Component{
           <Col xs={6} className="text-success text-center pt-2 h4" role="button" onClick={this.downloadProgress}>
             <div>&darr;</div>
             <div>Download .txt with the work you have so far</div>
-            <a className="d-none" ref={this.downloadLink} href="" download="output.txt">I'm hidden, shhhh</a>
+            <a className="d-none" ref={this.downloadLink} href="toBeChanged" download="output.txt">I'm hidden, shhhh</a>
           </Col>
         </Row>
         <Row className="w-100 h5 pl-md-4 pl-1 pt-3 pt-md-0">{/*Status Here*/}
